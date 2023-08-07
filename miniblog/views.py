@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -8,8 +9,7 @@ def home(request):
     return render(request, 'miniblog/home.html', {})
 
 def logout(request):
-    # return render(request, 'miniblog/lo.html', {})
-    pass
+    return HttpResponseRedirect('/')
 
 def dashboard(request):
     return render(request, 'miniblog/dashboard.html', {})
