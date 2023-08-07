@@ -13,7 +13,7 @@ def home(request):
     return render(request, 'miniblog/home.html', {})
 
 
-def logout(request):
+def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
@@ -22,7 +22,7 @@ def dashboard(request):
     return render(request, 'miniblog/dashboard.html', {})
 
 
-def signup(request):
+def user_signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -35,7 +35,7 @@ def signup(request):
     return render(request, 'miniblog/signup.html', {'form': form})
 
 
-def login(request):
+def user_login(request):
     if not request.user.is_authenticated:
         if request.method == 'POST':
             form = LoginForm(request, data=request.POST)
