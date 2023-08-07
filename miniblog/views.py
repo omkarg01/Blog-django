@@ -13,7 +13,6 @@ def index(request):
 
 def home(request):
     posts = Post.objects.all()
-    print(posts)
     return render(request, 'miniblog/home.html', {'posts': posts})
 
 
@@ -23,7 +22,8 @@ def user_logout(request):
 
 
 def dashboard(request):
-    return render(request, 'miniblog/dashboard.html', {})
+    posts = Post.objects.all()
+    return render(request, 'miniblog/dashboard.html', {'posts': posts})
 
 
 def user_signup(request):
@@ -55,3 +55,13 @@ def user_login(request):
         return render(request, 'miniblog/login.html', {'form': form})
     else: 
         return HttpResponseRedirect('/dashboard/')
+
+def user_addpost(request):
+    return render(request, 'miniblog/addpost.html', {})
+
+def user_updatepost(request, id):
+    return render(request, 'miniblog/updatepost.html', {})
+
+def user_deletepost(request, id):
+    pass
+
