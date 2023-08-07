@@ -38,14 +38,13 @@ def user_signup(request):
 def user_login(request):
     if not request.user.is_authenticated:
         if request.method == 'POST':
-            form = LoginForm(request, data=request.POST)
+            form = LoginForm(request=request, data=request.POST)
             if form.is_valid():
                 uname = form.cleaned_data['username']
                 upass = form.cleaned_data['password']
                 user = authenticate(request, username=uname, password=upass)
                 if user is not None:
                     login(request, user)
-                    messages.success(request, 'Logged in Successfully !!')
                     return HttpResponseRedirect('/dashboard/')
         else :
             form = LoginForm()
