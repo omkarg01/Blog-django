@@ -4,13 +4,17 @@ from miniblog.forms import LoginForm, SignUpForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
+from miniblog.models import Post
+
 # Create your views here.
 def index(request):
     return render(request, 'miniblog/base.html', {})
 
 
 def home(request):
-    return render(request, 'miniblog/home.html', {})
+    posts = Post.objects.all()
+    print(posts)
+    return render(request, 'miniblog/home.html', {'posts': posts})
 
 
 def user_logout(request):
