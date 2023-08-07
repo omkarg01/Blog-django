@@ -11,6 +11,9 @@ def logout(request):
     # return render(request, 'miniblog/lo.html', {})
     pass
 
+def dashboard(request):
+    return render(request, 'miniblog/dashboard.html', {})
+
 def signup(request):
     return render(request, 'miniblog/signup.html', {})
 

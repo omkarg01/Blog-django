@@ -7,6 +7,6 @@ app_name = "miniblog"
 urlpatterns = [
     path("", views.home, name="home"),
     path("dashboard/", views.dashboard, name="dashboard"),
-    path("signup/", views.dashboard, name="signup"),
-    path("login/", views.dashboard, name="login"),
+    path("signup/", views.signup, name="signup"),
+    path("login/", views.login, name="login"),
 ]
