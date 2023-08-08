@@ -77,8 +77,25 @@ def user_addpost(request):
 
 
 def user_updatepost(request, id):
-    return render(request, 'miniblog/updatepost.html', {})
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            pi = Post.objects.get(pk=id)
+            form = PostForm(request.POST, instance=pi)
+            if form.is_valid():
+                form.save()
+        else:
+            pi = Post.objects.get(pk=id)
+            form = PostForm(instance=pi)
+        return render(request, 'miniblog/updatepost.html', {'form': form})
+    else:
+        return HttpResponseRedirect('/login/')
 
 
 def user_deletepost(request, id):
-    pass
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            pi = Post.objects.get(pk=id)
+            pi.delete()
+            return HttpResponseRedirect('/dashboard/')
+    else:
+        return HttpResponseRedirect('/login/')
