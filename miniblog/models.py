@@ -4,4 +4,4 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    desc = RichTextField()
+    desc = RichTextField(blank=True, null=True)

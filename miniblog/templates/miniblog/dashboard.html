@@ -40,7 +40,7 @@
       <tr>
         <th scope="row">{{post.id}}</th>
         <td>{{post.title}}</td>
-        <td>{{post.desc}}</td>
+        <td>{{post.desc | safe}}</td>
         <td class="text-center">
           <a
             href="{% url 'miniblog:updatepost' post.id %}"
